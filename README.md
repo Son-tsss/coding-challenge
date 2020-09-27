@@ -1,2 +1,2 @@
-# ottonova-coding-challenge
+# coding-challenge
 It is test interview code challenge

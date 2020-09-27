@@ -1,0 +1,32 @@
+.chat-messages {
+  width: 100%;
+  flex: 1;
+  overflow: auto;
+  display: flex;
+
+  &__messages-container {
+    width: 100%;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 15px;
+    margin-top: auto;
+  }
+
+  &__message {
+    margin-bottom: 15px;
+    display: flex;
+    width: 100%;
+
+    &_user {
+      justify-content: flex-end;
+    }
+
+    &_bot {
+      justify-content: flex-start;
+    }
+  }
+
+  &__widget {
+
+  }
+}

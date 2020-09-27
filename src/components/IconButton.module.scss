@@ -1,0 +1,27 @@
+@import "../styles/variables";
+
+.icon-button {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+
+  & svg {
+    fill: $secondary-color;
+  }
+
+  &:hover {
+    & svg {
+      fill: $secondary-color-active;
+    }
+  }
+
+  &_disabled {
+    cursor: default;
+
+    &:hover {
+      & svg {
+        fill: $secondary-color;
+      }
+    }
+  }
+}

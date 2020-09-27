@@ -1,0 +1,15 @@
+@import "../../../../styles/variables";
+
+.date-widget {
+  &__weekday {
+    margin-bottom: 7px;
+    width: 150px;
+  }
+
+  & &__button {
+    padding: 5px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 14px;
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "target": "es5",
+    "jsx": "preserve",
+    "noEmit": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "moduleResolution": "Node",
+    "lib": [
+      "dom",
+      "es2018"
+    ]
+  },
+  "include": [
+    "./src/**/*.ts",
+    "./src/**/*.tsx",
+    "./types/global.d.ts",
+    "./src/**/*.scss"
+  ]
+}

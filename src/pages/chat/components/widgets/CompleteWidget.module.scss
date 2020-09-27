@@ -1,0 +1,14 @@
+@import "../../../../styles/variables";
+
+.complete-widget {
+  display: flex;
+
+  & &__button {
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 14px;
+    margin-right: 5px;
+    width: 100px;
+  }
+}

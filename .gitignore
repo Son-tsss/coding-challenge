@@ -1,0 +1,8 @@
+node_modules/
+
+# Ignore webstorm files
+.idea/**/*.*
+# except configurations
+!.idea/runConfigurations/**/*.*
+
+dist

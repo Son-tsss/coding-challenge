@@ -1,0 +1,27 @@
+@import "../styles/variables";
+
+.text-field {
+  width: 100%;
+  display: flex;
+
+  &__input {
+    border-radius: 5px;
+    color: $text-color;
+    font-size: 1rem;
+    line-height: 22px;
+    letter-spacing: .34px;
+    border: 1px solid $secondary-color;
+    padding: 10px 15px;
+    font-weight: 500;
+    width: 100%;
+
+    &::placeholder {
+      color: $secondary-color;
+    }
+
+    &:active, &:focus {
+      border: 1px solid $primary-color-active;
+      outline: none;
+    }
+  }
+}

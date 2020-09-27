@@ -1,0 +1,15 @@
+.chat-input {
+
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+
+  &__text-field {
+    flex: 1 1 auto;
+  }
+
+  &__send-button {
+    margin-left: 7px;
+  }
+}

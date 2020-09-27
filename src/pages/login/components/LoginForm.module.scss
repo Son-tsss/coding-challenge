@@ -1,0 +1,18 @@
+@import "../../../styles/variables";
+
+.login-form{
+  &__error{
+    margin-top: -18px;
+    color: $danger-color
+  }
+
+  &__text-field {
+    margin-bottom: 15px;
+    display: flex;
+  }
+
+  &__login-button {
+    width: 100%;
+    display: flex;
+  }
+}
