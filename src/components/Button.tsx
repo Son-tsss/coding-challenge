@@ -19,12 +19,12 @@ type ButtonProps = {
   disabled?: boolean;
 }
 
-export default function Button(props:ButtonProps) {
-  const { className, type = ButtonTypes.primary, value="", icon, onClick, disabled = false} = props;
-  const classes = cn(block({ [type]: true, disabled }), className);
+export default function Button(props: ButtonProps) {
+  const {className, type = ButtonTypes.primary, value = "", icon, onClick, disabled = false} = props;
+  const classes = cn(block({[type]: true, disabled}), className);
 
   const handleClick = useCallback(() => {
-    if(!disabled) {
+    if (!disabled) {
       onClick()
     }
   }, [onClick, disabled]);

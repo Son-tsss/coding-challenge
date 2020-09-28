@@ -1,13 +1,13 @@
-import React, {useEffect, useRef} from 'react'
+import React, {useEffect, useRef} from "react";
 
 const useScrollToBottom = (deps: any[]) => {
   const lastElementRef = useRef(null);
 
   const scrollToBottom = () => {
     lastElementRef.current.scrollIntoView({ behavior: "smooth" })
-  }
+  };
 
-  useEffect(scrollToBottom, [...deps]);
+  useEffect(scrollToBottom, deps);
 
   return (
       <div ref={lastElementRef} />

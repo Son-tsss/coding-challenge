@@ -1,6 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {createReducer} from "@reduxjs/toolkit";
 import {receiveError, receiveMessage, sendMessage, showComplete, showDate, showMap, showRate} from "./chatActions";
-import {ChatMessage, ChatMessageAuthor, WidgetData, WidgetTypes} from "./chat.types";
+import {AttachmentTypes, ChatMessage, ChatMessageAuthor, WidgetData, WidgetTypes} from "./chat.types";
 
 const greetingMessage = {
   author: ChatMessageAuthor.bot,
@@ -10,23 +10,32 @@ const greetingMessage = {
 export type ChatState = {
   messages: ChatMessage[];
   currentWidget: WidgetData;
-  error: "";
+  error: string;
 }
 
-const initialState = {
+const initialState: ChatState = {
   messages: [greetingMessage],
-  currentWidget: {},
+  currentWidget: null,
   error: null,
 };
 
-const chatSlice = createSlice({
-  name: "chat",
+const chatReducer = createReducer<ChatState>(
   initialState,
-  reducers: {},
-  extraReducers: (builder) => {
-    builder.addCase(sendMessage.fulfilled, (state, {payload}) => {
+  (builder) => {
+    builder.addCase(sendMessage, (state, {payload}) => {
       state.messages.push({
         author: ChatMessageAuthor.user,
+        message: payload,
+
+      });
+
+      state.error = null;
+      state.currentWidget = null;
+    });
+
+    builder.addCase(receiveMessage, (state, {payload}) => {
+      state.messages.push({
+        author: ChatMessageAuthor.bot,
         message: payload,
       });
 
@@ -34,33 +43,27 @@ const chatSlice = createSlice({
       state.currentWidget = null;
     });
 
-    builder.addCase(receiveMessage.fulfilled, (state, {payload}) => {
-      state.messages.push({
-        author: ChatMessageAuthor.bot,
-        message: payload
-      });
-
-      state.error = null;
-      state.currentWidget = null;
-    });
-
-    builder.addCase(receiveError.fulfilled, (state, {payload}) => {
+    builder.addCase(receiveError, (state, {payload}) => {
       state.error = payload;
       state.currentWidget = null;
     });
 
-
-    builder.addCase(showMap.fulfilled, (state, {payload}) => {
+    builder.addCase(showMap, (state, {payload}) => {
       state.error = null;
+
       state.messages.push({
         author: ChatMessageAuthor.bot,
         message: "See you there",
-        map: payload
+        attachment: {
+          type: AttachmentTypes.map,
+          data: payload
+        }
       });
+
       state.currentWidget = null;
     });
 
-    builder.addCase(showDate.fulfilled, (state, {payload}) => {
+    builder.addCase(showDate, (state, {payload}) => {
       state.error = null;
       state.messages.push({
         author: ChatMessageAuthor.bot,
@@ -73,7 +76,7 @@ const chatSlice = createSlice({
       }
     });
 
-    builder.addCase(showRate.fulfilled, (state, {payload}) => {
+    builder.addCase(showRate, (state, {payload}) => {
       state.error = null;
       state.messages.push({
         author: ChatMessageAuthor.bot,
@@ -86,7 +89,7 @@ const chatSlice = createSlice({
       }
     });
 
-    builder.addCase(showComplete.fulfilled, (state, {payload}) => {
+    builder.addCase(showComplete, (state, {payload}) => {
       state.error = null;
       state.messages.push({
         author: ChatMessageAuthor.bot,
@@ -98,7 +101,6 @@ const chatSlice = createSlice({
         data: payload
       }
     });
-  }
-});
+  });
 
-export default chatSlice.reducer;
+export default chatReducer;

@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect} from 'react'
+import {useCallback, useEffect} from 'react'
 import useBindActionCreators from "../../../hooks/useBindActionCreators";
 import {receiveError, receiveMessage, sendMessage, receiveCommand} from "../store/chatActions";
 import socketIOClient from 'socket.io-client';
@@ -6,13 +6,14 @@ import useAppStateSelector from "../../../hooks/useAppStateSelector";
 
 let socket = null;
 
-const useSocket = () => {
+const useChatBot = () => {
   const {user} = useAppStateSelector(({login}) => login);
   const actions = useBindActionCreators({sendMessage, receiveMessage, receiveError, receiveCommand});
+  const chatBotUrl = (window.appConfig || {}).botUrl;
 
   useEffect(() => {
     if (!socket) {
-      socket = socketIOClient('https://demo-chat-server.on.ag/');
+      socket = socketIOClient(chatBotUrl);
 
       socket.on("message", (data) => {
         actions.receiveMessage(data.message);
@@ -29,7 +30,7 @@ const useSocket = () => {
   const handleMessageSend = useCallback((message) => {
     if (socket) {
       socket.emit('message', {
-        author: user?.userName || "Mari",
+        author: user?.name,
         message
       });
 
@@ -51,4 +52,4 @@ const useSocket = () => {
   }
 };
 
-export default useSocket;
+export default useChatBot;

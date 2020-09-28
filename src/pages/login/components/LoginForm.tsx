@@ -1,5 +1,5 @@
-import React, {useCallback, useEffect, useState} from 'react';
-import TextField from "../../../components/TextField";
+import React, {useState} from "react";
+import TextField, {TextFieldTypes} from "../../../components/TextField";
 import Button from "../../../components/Button";
 import useAppStateSelector from "../../../hooks/useAppStateSelector";
 import {loginUser} from "../store/loginActions"
@@ -28,11 +28,22 @@ const LoginForm = () => {
         <div className={block('error')}>
           <span>{error}</span>
         </div>
-      )
-      }
-      <TextField autoFocus className={block("text-field")} placeholder="Login" value={userName} onChange={setUserName}/>
-      <TextField className={block("text-field")} placeholder="Password" value={password} isPassword
-                 onChange={setPassword}/>
+      )}
+      <TextField
+        autoFocus
+        className={block("text-field")}
+        placeholder="Login"
+        value={userName}
+        onChange={setUserName}
+      />
+      <TextField
+        className={block("text-field")}
+        placeholder="Password"
+        value={password}
+        type={TextFieldTypes.password}
+        onChange={setPassword}
+        onEnterPress={handleLoginClick}
+      />
       <div className={block("login-button")}>
         <Button onClick={handleLoginClick} value="Login"/>
       </div>

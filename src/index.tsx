@@ -4,6 +4,6 @@ import ReactDOM from 'react-dom';
 import Entry from './Entry';
 
 ReactDOM.render(
-  (<Entry />),
+  <Entry />,
   document.getElementById('root')
 );

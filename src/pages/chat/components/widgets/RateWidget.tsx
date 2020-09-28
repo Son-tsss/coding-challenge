@@ -17,16 +17,19 @@ type RateWidgetProps = {
   onSelect: (message: string) => void
 }
 
-const RateWidget  = ({range, onSelect}: RateWidgetProps) => {
-  const rates = arrayFromRange(...range)
+const RateWidget = ({range, onSelect}: RateWidgetProps) => {
+  const rates = arrayFromRange(...range);
+
   return (
     <div className={block()}>
-      {rates.map( rate => {
-        const handleClick = () => {onSelect(rate)};
+      {rates.map(rate => {
+        const handleClick = () => {
+          onSelect(rate)
+        };
 
         return (
           <div key={rate} onClick={handleClick} className={block("rate")}>
-            <StarIcon className={block("rate-star")} />
+            <StarIcon className={block("rate-star")}/>
             <div className={block("rate-number")}>{rate}</div>
           </div>
         )

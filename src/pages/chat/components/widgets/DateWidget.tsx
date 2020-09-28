@@ -1,5 +1,4 @@
 import React from 'react';
-import moment from 'moment';
 
 import bem from "bem-css-modules";
 import styles from "./DateWidget.module.scss";
@@ -9,14 +8,13 @@ const block = bem(styles);
 
 const weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
-type DateWidgetProps = {
+export type DateWidgetProps = {
   date: string;
   onSelect: (message: string) => void
 }
 
 const DateWidget = ({date, onSelect}: DateWidgetProps) => {
-  const momentDate = moment(date);
-  const weekdayIndex = momentDate.day() - 1;
+  const weekdayIndex = new Date(date).getDay() - 1;
 
   const orderedWeekdays = [...weekdays.slice(weekdayIndex), ...weekdays.slice(0, weekdayIndex)];
 
@@ -29,8 +27,8 @@ const DateWidget = ({date, onSelect}: DateWidgetProps) => {
           };
 
           return (
-            <li key={weekday} className={block("weekday")}>
-              <Button className={block("button")} onClick={handleClick} value={weekday} />
+            <li key={weekday} className={block("weekday")} data-test-weekday="">
+              <Button className={block("button")} onClick={handleClick} value={weekday}/>
             </li>
           )
         })}

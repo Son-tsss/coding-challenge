@@ -1,13 +1,11 @@
 const path = require('path');
-const webpack = require('webpack');
-
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
-
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
+const babelOptions = require('./src/babel.config.js');
+const config = require('./configuration.json');
 
 const resolveRelativePath = (relativePath) => path.resolve(__dirname, relativePath);
-
-const babelOptions = require('./src/babel.config.js');
 
 const publicPath = '/';
 
@@ -33,10 +31,9 @@ module.exports = {
 				template: resolveRelativePath('./src/static/index.html'),
 			},
 		),
-
-		// This is necessary to emit hot updates (currently CSS only):
-		// new webpack.HotModuleReplacementPlugin(),
-
+    new InterpolateHtmlPlugin(HtmlWebpackPlugin, {
+      BOT_URL: config.urls.bot
+    }),
 		// Watcher doesn't work well if you mistype casing in a path so we use
 		// a plugin that prints an error when you attempt to do this.
 		// See https://github.com/facebook/create-react-app/issues/240
@@ -67,7 +64,7 @@ module.exports = {
 			},
 			{
 				test: /^((?!\.module).)*\.(scss|css)$/,
-				loaders: ['style-loader', 'css-loader', 'sass-loader'],
+				use: ['style-loader', 'css-loader', 'sass-loader'],
 			},
 			{
 				test: /\.(jsx?|tsx?)$/,
@@ -82,7 +79,7 @@ module.exports = {
 
 	devServer: {
 		publicPath,
-		port: 11000,
+		port: config.port,
 		historyApiFallback: {
 			disableDotRule: true,
 		},

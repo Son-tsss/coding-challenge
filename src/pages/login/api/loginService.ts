@@ -1,11 +1,15 @@
 const fakeUsers = {
-  "JohnDoe": {
+  "johndoe": {
     password: "1234567A!",
     name: "John Doe",
   },
-  "MaggieSmith": {
+  "maggiesmith": {
     password: "7654321Z)",
     name: "Minerva McGonagall"
+  },
+  "admin": {
+    password: "admin",
+    name: "Admin"
   }
 };
 
@@ -22,24 +26,25 @@ export type loginResult = {
   }
 }
 
-export async function login({userName, password}: loginArgs):Promise<loginResult> {
+export async function login({userName, password}: loginArgs): Promise<loginResult> {
   const result = {
     error: null,
     user: null
   };
 
-  if(!fakeUsers[userName]){
+  const login = userName.toLowerCase();
+  if (!fakeUsers[login]) {
     result.error = "Sorry, we have no idea who you are";
     return result
   }
 
-  if(fakeUsers[userName].password !== password) {
+  if (fakeUsers[login].password !== password) {
     result.error = "Password is incorrect";
   }
 
   result.user = {
-    userName,
-    name: fakeUsers[userName].name,
+    userName: login,
+    name: fakeUsers[login].name,
   };
 
   return result;

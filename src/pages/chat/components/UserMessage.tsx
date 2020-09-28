@@ -1,7 +1,6 @@
 import React from 'react';
 
 import bem from "bem-css-modules";
-import cn from 'classnames';
 import styles from "./UserMessage.module.scss";
 
 const block = bem(styles);

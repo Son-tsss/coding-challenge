@@ -21,15 +21,16 @@ const AppHeader = () => {
         <a href="https://www.ottonova.de/" className={block("logo")}>
           <FullLogo/>
         </a>
-        {isLoggedIn && <div className={block("user")}>
-        <span className={block("user-name")}>
-          {user.name}
-        </span>
-					<div className={block("logout")}>
-						<IconButton icon={<LogoutIcon/>} onClick={actions.logoutUser} />
-					</div>
-				</div>
-        }
+        {isLoggedIn && (
+          <div className={block("user")}>
+            <span className={block("user-name")}>
+              {user.name}
+            </span>
+            <div className={block("logout")}>
+              <IconButton icon={<LogoutIcon/>} onClick={actions.logoutUser}/>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   )

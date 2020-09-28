@@ -9,6 +9,6 @@ const useBindActionCreators = <A, M extends ActionCreatorsMapObject<A>>(actionCr
     () => bindActionCreators(actionCreators, dispatch),
     [Object.keys(actionCreators)]
   );
-}
+};
 
 export default useBindActionCreators;

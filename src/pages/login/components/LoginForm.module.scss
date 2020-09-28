@@ -1,9 +1,10 @@
 @import "../../../styles/variables";
 
-.login-form{
-  &__error{
+.login-form {
+  &__error {
     margin-top: -18px;
-    color: $danger-color
+    color: $danger-color;
+    text-align: center;
   }
 
   &__text-field {

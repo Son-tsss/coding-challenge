@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import useSocket from "../hooks/useSocket";
+import useChatBot from "../hooks/useChatBot";
 import TextField from "../../../components/TextField";
-import cn from 'classnames'
+import cn from "classnames";
 import IconButton from "../../../components/IconButton";
 import {ActionIcon, SendIcon} from "../../../components/icons/Icons";
 import bem from "bem-css-modules";
@@ -14,7 +14,7 @@ type ChatInputProps = {
 }
 
 const ChatInput = ({className}: ChatInputProps) => {
-  const {sendMessage, sendCommand} = useSocket();
+  const {sendMessage, sendCommand} = useChatBot();
   const [message, setMessage] = useState("");
 
   const handleSendClick = () => {
@@ -40,8 +40,7 @@ const ChatInput = ({className}: ChatInputProps) => {
         />
         <IconButton onClick={sendCommand} icon={<ActionIcon />} />
       </div>
-
-  )
+  );
 };
 
 export default ChatInput;

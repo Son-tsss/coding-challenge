@@ -1,39 +1,63 @@
 export enum ChatMessageAuthor {
-  user ='user',
-  bot='bot'
+  user = 'user',
+  bot = 'bot'
 }
 
 export type MapCoordinates = {
-  lat: number,
-  lng: number,
+  lat: number;
+  lng: number;
 }
+
+export enum AttachmentTypes {
+  map = "map"
+}
+
+export type MapAttachment = {
+  type: AttachmentTypes.map;
+  data: MapCoordinates;
+}
+
+export type Attachments = MapAttachment;
 
 export type ChatMessage = {
   author: ChatMessageAuthor;
   message: string;
-  map?: MapCoordinates;
-}
-
-export type SocketMessage = {
-  message: string
+  attachment?: MapAttachment;
 }
 
 export type SocketCommandEvent = {
-  author: string,
-  command: SocketCommand,
+  author: string;
+  command: SocketCommand;
 }
 
 export enum SocketCommandTypes {
   map = 'map',
   date = 'date',
-  rate= 'rate',
+  rate = 'rate',
   complete = 'complete'
 }
 
-export type SocketCommand = {
-  type: SocketCommandTypes,
-  data: any
+export type SocketMapCommand = {
+  type: SocketCommandTypes.map;
+  data: MapCoordinates;
 }
+
+export type SocketRateCommand = {
+  type: SocketCommandTypes.rate;
+  data: [number,number];
+}
+
+export type SocketDateCommand = {
+  type: SocketCommandTypes.date;
+  data: string;
+}
+
+export type SocketCompleteCommand = {
+  type: SocketCommandTypes.complete;
+  data: [string, string];
+}
+
+export type SocketCommand = SocketMapCommand | SocketRateCommand | SocketDateCommand | SocketCompleteCommand;
 
 export enum WidgetTypes {
   date = 'date',
@@ -42,6 +66,6 @@ export enum WidgetTypes {
 }
 
 export type WidgetData = {
-  type: WidgetTypes,
-  data: any
+  type: WidgetTypes;
+  data: any;
 }

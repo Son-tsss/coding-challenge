@@ -1,10 +1,10 @@
-import React from 'react';
-import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
+import React from "react";
+import {BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
 
-import LoginPage from '../pages/login/components/LoginPage';
-import ChatPage from '../pages/chat/components/ChatPage';
+import LoginPage from "../pages/login/components/LoginPage";
+import ChatPage from "../pages/chat/components/ChatPage";
 
-import routes from './routes'
+import routes from "./routes";
 import useAppStateSelector from "../hooks/useAppStateSelector";
 import PageContainer from "../components/PageContainer";
 
@@ -24,7 +24,7 @@ const AppRouter = () => {
         </Switch>
       </Router>
     </PageContainer>
-  )
+  );
 };
 
 export default AppRouter;

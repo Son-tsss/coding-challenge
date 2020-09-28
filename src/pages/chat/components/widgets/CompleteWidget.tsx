@@ -14,14 +14,14 @@ type CompleteWidgetProps = {
 const CompleteWidget = ({options, onSelect}: CompleteWidgetProps) => {
   return (
     <div className={block()}>
-        {options.map(option => {
-          const handleClick = () => {
-            onSelect(option);
-          };
-          return (
-              <Button key={option} className={block("button")} onClick={handleClick} value={option} />
-          )
-        })}
+      {options.map(option => {
+        const handleClick = () => {
+          onSelect(option);
+        };
+        return (
+          <Button key={option} className={block("button")} onClick={handleClick} value={option}/>
+        )
+      })}
     </div>
   )
 };

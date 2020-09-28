@@ -1,0 +1,6 @@
+{
+  "port": 5000,
+  "urls": {
+    "bot": "https://demo-chat-server.on.ag/"
+  }
+}

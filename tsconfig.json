@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "checkJs": false,
     "allowJs": true,
     "target": "es5",
     "jsx": "preserve",
@@ -8,6 +9,7 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "moduleResolution": "Node",
+    "skipLibCheck": true,
     "lib": [
       "dom",
       "es2018"

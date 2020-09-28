@@ -3,7 +3,7 @@
 .rate-widget {
   display: flex;
 
-  &__rate{
+  &__rate {
     cursor: pointer;
     display: flex;
     flex-direction: column;
@@ -20,7 +20,7 @@
     }
   }
 
-  &__rate-star{
+  &__rate-star {
     width: 24px;
     height: 24px;
     margin-bottom: 3px;
